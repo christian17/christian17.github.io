@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<meta http-equiv="content-type" content="text/plain; charset=utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    loginsf(function(data){
+	alert(data);
+    });
+});
+
+function loginsf(fn){
+
+     $.support.cors = true;
+     $.ajax({
+            type: 'POST',
+            crossOrigin: true,
+            url: 'https://login.salesforce.com/services/oauth2/token',
+            dataType: 'json',
+            cache :false,
+            data : {"grant_type":"password","client_id":"3MVG9d8..z.hDcPIJBHgnmOMxMZp4_PtJxS61iwcn5xfPcSCbFjcnevyPUcmvJfKROwOfAKcRszAZ_MhNAf7N", "client_secret":"6426474597409685107","username":"christian.demo.salesforce@gmail.com","password":"moz@rt17BcRDDRPxPJIP2BFbv8WmqrbVw"},
+            success : function (data) {
+            	fn(data.access_token);
+            },
+            error : function (data, errorThrown, status) {
+		alert(errorThrown);
+            }
+    });
+ }
+
+
+</script>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
