@@ -1,0 +1,38 @@
+<html>
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </head>
+    <body>   
+      <h3>REST API With Javascript</h3>
+      <h4>Create Account Record</h4>
+      <label for="name">Account Name</label>
+      <input type="text" name="Name" id="name">
+      <br><br>
+      <button id="button">Submit</button>
+      <div id="status"></div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+       //Get access token.
+       //Because the access token is a URL parameter it needs to be decoded
+          var accessToken = decodeURI(GetURLParameter('access_token'));
+          console.log(accessToken);
+         }
+           //Use this function to get the access token from the URL
+           function GetURLParameter(sParam)
+            {
+              var mainURL = document.location+'';
+              var pageUrls = mainURL.split('#');
+              var sURLVariables = pageUrls[1].split('&');
+              for (var i = 0; i < sURLVariables.length; i++) 
+                {
+                  var sParameterName = sURLVariables[i].split('=');
+                  if (sParameterName[0] == sParam) 
+                    {
+                      return sParameterName[1];
+                      }
+                  }
+               }
+            }
+     </script>
+  </body>
+</html>
